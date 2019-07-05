@@ -1,7 +1,7 @@
-# VPC
-resource "aws_vpc" "my_main" {
-  cidr_block = "10.40.40.0/22"
-  tags {
-    Name = "my_main_vpc"
-  }
+# vpc
+module "vpc_a" {
+  source = "./vpc/"
+  subnet_vpc = "${var.subnet_vpc}"
+  subnet_dmz = "${var.subnet_dmz}"
+  subnet_internal = "${var.subnet_internal}"
 }

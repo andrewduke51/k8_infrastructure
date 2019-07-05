@@ -1,6 +1,7 @@
-# Cloud provider
+# provider aws
 provider "aws" {
-  version = ">= 1.0.0, <= 2.7"
+  version = ">= 1.0.0, <= 2.7.0"
+  region  = "us-east-1"
   shared_credentials_file = "${var.credentials}"
-  region = "${var.region}"
+  profile = "${var.profile}"
 }
