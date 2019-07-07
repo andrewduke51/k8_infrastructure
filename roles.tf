@@ -1,25 +1,23 @@
-//# role with priviliges
-//resource "aws_iam_role" "role_with_priviliges" {
-//  assume_role_policy = "${aws_iam_policy.role_policy_with_privilige.arn}"
-//}
-//
-//# privilige with policy
-//
-//# privilige policy document
-//data "aws_iam_policy_document" "role_privilige_policy" {
-//  statement {
-//    sid = "role_with_privilige"
-//    principals {
-//      identifiers = ["*"]
-//      type = "Service"
-//    }
-//    actions = ["*"]
-//
-//    resources = ["*"]
-//  }
-//}
-//
-//resource "aws_iam_policy" "role_policy_with_privilige" {
-//  name = "role_policy_with_privilige"
-//  policy = "${data.aws_iam_policy_document.role_privilige_policy.json}"
-//}
+# role with priviliges
+resource "aws_iam_role" "test_role" {
+  name = "test_role"
+
+  assume_role_policy = <<EOF
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Action": "sts:AssumeRole",
+      "Principal": {
+        "AWS": "${data.aws_caller_identity.account_id.account_id}"
+      },
+      "Effect": "Allow",
+      "Sid": ""
+    }
+  ]
+}
+EOF
+  tags = {
+    Name = "power_role"
+  }
+}

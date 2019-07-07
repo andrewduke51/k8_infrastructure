@@ -30,3 +30,4 @@ packerlog.txt
 terraform.tfstate.*
 *ubuntu-bionic-18.04-cloudimg-console*
 variables.tfvars
+*.py

@@ -1,4 +1,6 @@
-# policy to assume the powerful test role
+###########################################
+# policy to assume the powerful test role #
+###########################################
 resource "aws_iam_policy" "assume_policy" {
   name   = "assume_role_policy"
   path   = "/"
@@ -26,8 +28,9 @@ data "aws_iam_policy_document" "assume_role" {
   }
 }
 
-
-# policy to manage self (add required MFA)
+############################################
+# policy to manage self (add required MFA) #
+############################################
 resource "aws_iam_policy" "manage_self_policy" {
   name   = "manage_self_policy"
   path   = "/"
@@ -69,4 +72,27 @@ data "aws_iam_policy_document" "manage_self_mfa" {
       "arn:aws:iam::${data.aws_caller_identity.account_id.account_id}:user/*"
     ]
   }
+}
+
+#####################################
+# policy to make powerful test role #
+#####################################
+resource "aws_iam_role_policy" "priviliged_policy" {
+  name        = "priviliged_policy"
+  role = "${aws_iam_role.test_role.id}"
+
+  policy = <<EOF
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Action": [
+        "*"
+      ],
+      "Effect": "Allow",
+      "Resource": "*"
+    }
+  ]
+}
+EOF
 }
