@@ -24,6 +24,7 @@ data "aws_iam_policy_document" "assume_role" {
 
     resources = [
       "arn:aws:iam::${data.aws_caller_identity.account_id.account_id}:role/test_role",
+      "arn:aws:iam::${data.aws_caller_identity.account_id.account_id}:role/codebuild"
     ]
   }
 }
