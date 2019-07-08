@@ -14,7 +14,7 @@ resource "aws_codebuild_project" "ubuntu_docker" {
     compute_type                = "BUILD_GENERAL1_SMALL"
     image                       = "aws/codebuild/standard:2.0"
     type                        = "LINUX_CONTAINER"
-    image_pull_credentials_type = "CODEBUILD"
+    privileged_mode = true
 
     environment_variable {
       name  = "user"
@@ -24,9 +24,13 @@ resource "aws_codebuild_project" "ubuntu_docker" {
 
   source {
     type            = "GITHUB"
-    location        = "https://github.com/andrewduke51/various_ansible_projects.git"
+    location        = "https://github.com/andrewduke51/various_ansible_projects"
     buildspec       = "builds/ubuntu-base/buildspec.yml"
-    git_clone_depth = 1
+
+    auth {
+      type = "OAUTH"
+      resource = "AWS CodeBuild"
+    }
   }
 
 

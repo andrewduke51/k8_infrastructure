@@ -47,3 +47,8 @@ resource "aws_iam_role_policy_attachment" "policy_codebuild" {
   policy_arn = "arn:aws:iam::aws:policy/AWSCodeBuildAdminAccess"
   role = "${aws_iam_role.codebuild.name}"
 }
+
+resource "aws_iam_role_policy_attachment" "policy_cloudwath" {
+  policy_arn = "arn:aws:iam::aws:policy/CloudWatchLogsFullAccess"
+  role = "${aws_iam_role.codebuild.name}"
+}
