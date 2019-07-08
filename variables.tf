@@ -21,3 +21,15 @@ variable "subnet_dmz" {
 variable "subnet_internal" {
   default = "10.200.102.0/24"
 }
+
+variable "role_arn" {
+  default = ""
+}
+
+variable "sess_name" {
+  default = ""
+}
+
+variable "mfa_id" {
+  default = ""
+}
