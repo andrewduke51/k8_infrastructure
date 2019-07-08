@@ -4,7 +4,7 @@ resource "aws_codebuild_project" "ubuntu_docker" {
   name          = "test-project"
   description   = "test_codebuild_project"
   build_timeout = "5"
-  service_role  = "${aws_iam_role.test_role.arn}"
+  service_role  = "${aws_iam_role.codebuild.arn}"
 
   artifacts {
     type = "NO_ARTIFACTS"
@@ -20,17 +20,12 @@ resource "aws_codebuild_project" "ubuntu_docker" {
       name  = "user"
       value = "ubuntu"
     }
-
-    environment_variable {
-      name  = "param_1"
-      value = "/test/file_1"
-      type  = "PARAMETER_STORE"
-    }
   }
 
   source {
     type            = "GITHUB"
-    location        = "https://github.com/mitchellh/packer.git"
+    location        = "https://github.com/andrewduke51/various_ansible_projects.git"
+    buildspec       = "builds/ubuntu-base/buildspec.yml"
     git_clone_depth = 1
   }
 
