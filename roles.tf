@@ -57,3 +57,8 @@ resource "aws_iam_role_policy_attachment" "kms_admin" {
   policy_arn = "arn:aws:iam::aws:policy/AWSKeyManagementServicePowerUser"
   role = "${aws_iam_role.codebuild.name}"
 }
+
+resource "aws_iam_role_policy_attachment" "ssm_admin" {
+  policy_arn = "arn:aws:iam::aws:policy/AmazonSSMFullAccess"
+  role = "${aws_iam_role.codebuild.name}"
+}
