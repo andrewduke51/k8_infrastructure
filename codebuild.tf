@@ -24,6 +24,11 @@ resource "aws_codebuild_project" "ubuntu_docker" {
       name = "RUN_ENV"
       value = "CoStar"
     }
+    environment_variable {
+      name = "THE_SECRET"
+      value = "/CodeBuild/THE_SECRET"
+      type = "PARAMETER_STORE"
+    }
   }
 
   source {
