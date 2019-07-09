@@ -34,7 +34,8 @@ resource "aws_iam_role" "codebuild" {
     {
       "Effect": "Allow",
       "Principal": {
-        "Service": "codebuild.amazonaws.com"
+        "Service": "codebuild.amazonaws.com",
+        "AWS": "${data.aws_caller_identity.account_id.account_id}"
       },
       "Action": "sts:AssumeRole"
     }

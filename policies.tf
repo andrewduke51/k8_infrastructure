@@ -40,7 +40,7 @@ resource "aws_iam_policy" "manage_self_policy" {
 
 data "aws_iam_policy_document" "manage_self_mfa" {
   statement {
-    sid = "MFAManageSelf"
+    sid    = "MFAManageSelf"
     effect = "Allow"
 
     actions = [
@@ -57,8 +57,8 @@ data "aws_iam_policy_document" "manage_self_mfa" {
       "arn:aws:iam::${data.aws_caller_identity.account_id.account_id}:user/&{aws:username}"
     ]
   }
-    statement {
-    sid = "MFAListSelf"
+  statement {
+    sid    = "MFAListSelf"
     effect = "Allow"
 
     actions = [
@@ -79,7 +79,7 @@ data "aws_iam_policy_document" "manage_self_mfa" {
 # policy to make powerful test role #
 #####################################
 resource "aws_iam_role_policy" "priviliged_policy" {
-  name        = "priviliged_policy"
+  name = "priviliged_policy"
   role = "${aws_iam_role.test_role.id}"
 
   policy = <<EOF
