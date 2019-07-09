@@ -52,3 +52,8 @@ resource "aws_iam_role_policy_attachment" "policy_cloudwath" {
   policy_arn = "arn:aws:iam::aws:policy/CloudWatchLogsFullAccess"
   role = "${aws_iam_role.codebuild.name}"
 }
+
+resource "aws_iam_role_policy_attachment" "kms_admin" {
+  policy_arn = "arn:aws:iam::aws:policy/AWSKeyManagementServicePowerUser"
+  role = "${aws_iam_role.codebuild.name}"
+}
