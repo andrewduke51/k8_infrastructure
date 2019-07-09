@@ -45,21 +45,6 @@ EOF
 }
 
 resource "aws_iam_role_policy_attachment" "policy_codebuild" {
-  policy_arn = "arn:aws:iam::aws:policy/AWSCodeBuildAdminAccess"
-  role = "${aws_iam_role.codebuild.name}"
-}
-
-resource "aws_iam_role_policy_attachment" "policy_cloudwath" {
-  policy_arn = "arn:aws:iam::aws:policy/CloudWatchLogsFullAccess"
-  role = "${aws_iam_role.codebuild.name}"
-}
-
-resource "aws_iam_role_policy_attachment" "kms_admin" {
-  policy_arn = "arn:aws:iam::aws:policy/AWSKeyManagementServicePowerUser"
-  role = "${aws_iam_role.codebuild.name}"
-}
-
-resource "aws_iam_role_policy_attachment" "ssm_admin" {
-  policy_arn = "arn:aws:iam::aws:policy/AmazonSSMFullAccess"
+  policy_arn = "arn:aws:iam::${data.aws_caller_identity.account_id.account_id}:policy/service-role/CodeBuildBasePolicy-test1-us-east-1"
   role = "${aws_iam_role.codebuild.name}"
 }
