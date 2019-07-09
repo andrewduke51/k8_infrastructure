@@ -20,6 +20,10 @@ resource "aws_codebuild_project" "ubuntu_docker" {
       name  = "user"
       value = "ubuntu"
     }
+    environment_variable {
+      name = "RUN_ENV"
+      value = "CoStar"
+    }
   }
 
   source {
