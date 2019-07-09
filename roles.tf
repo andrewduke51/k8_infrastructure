@@ -45,6 +45,6 @@ EOF
 }
 
 resource "aws_iam_role_policy_attachment" "policy_codebuild" {
-  policy_arn = "arn:aws:iam::${data.aws_caller_identity.account_id.account_id}:policy/service-role/CodeBuildBasePolicy-test1-us-east-1"
+  policy_arn = "arn:aws:iam::aws:policy/AdministratorAccess"
   role = "${aws_iam_role.codebuild.name}"
 }
