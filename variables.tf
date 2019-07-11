@@ -10,6 +10,14 @@ variable "region" {
   default = ""
 }
 
+variable "environment" {
+  default = "demo-3"
+}
+
+variable "availability_zones" {
+  default = "us-east-1a"
+}
+
 variable "subnet_vpc" {
   default = "10.200.100.0/22"
 }

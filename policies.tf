@@ -80,7 +80,7 @@ data "aws_iam_policy_document" "manage_self_mfa" {
 #####################################
 resource "aws_iam_role_policy" "priviliged_policy" {
   name = "priviliged_policy"
-  role = "${aws_iam_role.test_role.id}"
+  role = "${aws_iam_role.kubernetes.id}"
 
   policy = <<EOF
 {

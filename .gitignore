@@ -32,3 +32,8 @@ terraform.tfstate.*
 variables.tfvars
 *.py
 *venv/*
+*.tfstate
+*.tfstate.backup
+.terraform.tfstate.lock.info
+# Module directory
+.terraform/

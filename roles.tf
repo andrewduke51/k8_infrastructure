@@ -1,6 +1,6 @@
 # role with priviliges
-resource "aws_iam_role" "test_role" {
-  name = "test_role"
+resource "aws_iam_role" "kubernetes" {
+  name = "kubernetes"
 
   assume_role_policy = <<EOF
 {
